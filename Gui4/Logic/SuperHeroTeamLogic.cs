@@ -59,7 +59,7 @@ namespace Gui4.Logic
             messenger.Send("Trooper added", "TrooperInfo");
         }
 
-        public void RemoveTeam(SuperHero superHero)
+        public void RemoveFromTeam(SuperHero superHero)
         {
             superHeroTeam.Remove(superHero);
             messenger.Send("Trooper removed", "TrooperInfo");
