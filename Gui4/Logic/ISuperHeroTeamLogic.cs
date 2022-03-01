@@ -5,7 +5,6 @@ namespace Gui4.Logic
 {
     public interface ISuperHeroTeamLogic
     {
-        int AllCost { get; }
         double AVGPower { get; }
         double AVGSpeed { get; }
 

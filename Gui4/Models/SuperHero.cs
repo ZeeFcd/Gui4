@@ -40,14 +40,6 @@ namespace Gui4.Models
         }
 
 
-        public int Cost
-        {
-            get
-            {
-                return speed * power;
-            }
-        }
-
         public SuperHero GetCopy()
         {
             return new SuperHero()

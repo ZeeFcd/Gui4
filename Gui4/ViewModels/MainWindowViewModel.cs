@@ -3,10 +3,12 @@ using Gui4.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -87,13 +89,19 @@ namespace Gui4.ViewModels
         public MainWindowViewModel(ISuperHeroTeamLogic logic)
         {
             this.logic = logic;
-            SuperHeroes = new ObservableCollection<SuperHero>();
+            
             Team = new ObservableCollection<SuperHero>();
-
-
+            if (File.Exists("heroes.json"))
+            {
+                SuperHeroes = JsonConvert.DeserializeObject<ObservableCollection<SuperHero>>(File.ReadAllText("heroes.json"));
+            }
+            else
+            {
+                SuperHeroes = new ObservableCollection<SuperHero>();
+            }
 
             logic.SetupCollections(SuperHeroes, Team);
-
+            
             AddToTeamCommand = new RelayCommand(
                 () => logic.AddToTeam(selectedFromSuperHeroes),
                 () => selectedFromSuperHeroes != null

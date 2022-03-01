@@ -5,6 +5,7 @@ using Microsoft.Toolkit.Mvvm.Messaging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,14 +27,6 @@ namespace Gui4.Logic
             this.editorService = editorService;
         }
 
-        public int AllCost
-        {
-            get
-            {
-                return superHeroTeam.Count == 0 ? 0 : superHeroTeam.Sum(t => t.Cost);
-            }
-        }
-
         public double AVGPower
         {
             get
@@ -52,16 +45,7 @@ namespace Gui4.Logic
 
         public void SetupCollections(IList<SuperHero> superHeroes, IList<SuperHero> superHeroTeam)
         {
-            if (File.Exists("heroes.json"))
-            {
-                var superHeroesJSON = JsonConvert.DeserializeObject<IList<SuperHero>>(File.ReadAllText("heroes.json"));
-                superHeroes = superHeroesJSON;
-                this.superHeroes = superHeroesJSON;   
-            }
-            else
-            {
-                this.superHeroes = superHeroes;
-            }
+            this.superHeroes = superHeroes;
             this.superHeroTeam = superHeroTeam;
         }
 
