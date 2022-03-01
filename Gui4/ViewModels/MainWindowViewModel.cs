@@ -50,13 +50,6 @@ namespace Gui4.ViewModels
         public ICommand RemoveFromTeamCommand { get; set; }
         public ICommand CreateSuperHeroCommand { get; set; }
 
-        //public int AllCost
-        //{
-        //    get
-        //    {
-        //        return logic.AllCost;
-        //    }
-        //}
 
         public double AVGPower
         {
@@ -118,7 +111,6 @@ namespace Gui4.ViewModels
 
             Messenger.Register<MainWindowViewModel, string, string>(this, "SuperHeroInfo", (recipient, msg) =>
             {
-                //OnPropertyChanged("AllCost");
                 OnPropertyChanged("AVGPower");
                 OnPropertyChanged("AVGSpeed");
             });

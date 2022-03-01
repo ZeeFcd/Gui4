@@ -48,9 +48,9 @@
         <StackPanel Grid.Column="1">
             <Label HorizontalContentAlignment="Center" FontSize="14"
                 Content="{Binding AllCost}" ContentStringFormat="Cost: {0}$" />
-            <Button Content="Add To Army" Command="{Binding AddToTeamCommand}" Margin="10" Padding="10" />
-            <Button Content="Remove From Army" Command="{Binding RemoveFromTeamCommand}" Margin="10" Padding="10" />
-            <Button Content="Edit Trooper" Command="{Binding CreateSuperHeroCommand}" Margin="10" Padding="10" />
+            <Button Content="Add To Team" Command="{Binding AddToTeamCommand}" Margin="10" Padding="10" />
+            <Button Content="Remove From Team" Command="{Binding RemoveFromTeamCommand}" Margin="10" Padding="10" />
+            <Button Content="Create SuperHero" Command="{Binding CreateSuperHeroCommand}" Margin="10" Padding="10" />
             <Label HorizontalContentAlignment="Center" FontSize="14"
                 Content="{Binding AVGPower}" ContentStringFormat="Power: {0}" />
             <ProgressBar Height="20" Maximum="10" 
@@ -69,6 +69,7 @@
                         <Label Content="{Binding Type}" />
                         <Label Content="{Binding Power}" ContentStringFormat="[{0}]" />
                         <Label Content="{Binding Speed}" ContentStringFormat="[{0}]" />
+                        <Label Content="{Binding Karma}" ContentStringFormat="[{0}]" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
