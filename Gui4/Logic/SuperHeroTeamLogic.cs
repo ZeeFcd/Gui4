@@ -55,14 +55,14 @@ namespace Gui4.Logic
             if (File.Exists("kaga.json"))
             {
                 var superHeroesJSON = JsonConvert.DeserializeObject<IList<SuperHero>>(File.ReadAllText("kaga.json"));
-                this.superHeroes = superHeroesJSON;
-                this.superHeroTeam = superHeroTeam;
+                superHeroes = superHeroesJSON;
+                this.superHeroes = superHeroesJSON;   
             }
-
-
-
-            ;
-            
+            else
+            {
+                this.superHeroes = superHeroes;
+            }
+            this.superHeroTeam = superHeroTeam;
         }
 
         public void AddToTeam(SuperHero superHero)
