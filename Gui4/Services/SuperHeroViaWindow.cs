@@ -11,7 +11,7 @@ namespace Gui4.Services
     {
         public void Create(SuperHero superHero)
         {
-            //new SuperHeroEditorWindow(superHero).ShowDialog();
+            new CreateSuperHero(superHero).ShowDialog();
         }
     }
 }
