@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gui4", "Gui4\Gui4.csproj", "{820FFD56-6B58-4C88-A1D0-FF2018EE364B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{820FFD56-6B58-4C88-A1D0-FF2018EE364B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{820FFD56-6B58-4C88-A1D0-FF2018EE364B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{820FFD56-6B58-4C88-A1D0-FF2018EE364B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{820FFD56-6B58-4C88-A1D0-FF2018EE364B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1C5535E-80BE-49AF-BA61-CA37386C8258}
+	EndGlobalSection
+EndGlobal
