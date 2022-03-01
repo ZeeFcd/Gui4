@@ -9,9 +9,9 @@ namespace Gui4.Logic
         double AVGPower { get; }
         double AVGSpeed { get; }
 
-        void AddToArmy(SuperHero superHero);
-        void EditTrooper(SuperHero superHero);
-        void RemoveFromArmy(SuperHero superHero);
+        void AddToTeam(SuperHero superHero);
+        void RemoveTeam(SuperHero superHero);
+        void EditSuperHero(SuperHero superHero);
         void SetupCollections(IList<SuperHero> superHeroes, IList<SuperHero> superHeroTeam);
     }
 }

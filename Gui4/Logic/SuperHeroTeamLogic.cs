@@ -53,19 +53,19 @@ namespace Gui4.Logic
             this.superHeroTeam = superHeroTeam;
         }
 
-        public void AddToArmy(SuperHero superHero)
+        public void AddToTeam(SuperHero superHero)
         {
             superHeroTeam.Add(superHero.GetCopy());
             messenger.Send("Trooper added", "TrooperInfo");
         }
 
-        public void RemoveFromArmy(SuperHero superHero)
+        public void RemoveTeam(SuperHero superHero)
         {
             superHeroTeam.Remove(superHero);
             messenger.Send("Trooper removed", "TrooperInfo");
         }
 
-        public void EditTrooper(SuperHero superHero)
+        public void EditSuperHero(SuperHero superHero)
         {
             editorService.Edit(superHero);
         }
