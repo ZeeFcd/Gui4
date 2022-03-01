@@ -56,13 +56,13 @@ namespace Gui4.Logic
         public void AddToTeam(SuperHero superHero)
         {
             superHeroTeam.Add(superHero.GetCopy());
-            messenger.Send("Trooper added", "TrooperInfo");
+            messenger.Send("Superhero added", "SuperHeroInfo");
         }
 
         public void RemoveFromTeam(SuperHero superHero)
         {
             superHeroTeam.Remove(superHero);
-            messenger.Send("Trooper removed", "TrooperInfo");
+            messenger.Send("Superhero removed", "SuperHeroInfo");
         }
 
         public void EditSuperHero(SuperHero superHero)
