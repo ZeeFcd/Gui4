@@ -5,6 +5,7 @@ using Microsoft.Toolkit.Mvvm.Messaging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,10 +52,17 @@ namespace Gui4.Logic
 
         public void SetupCollections(IList<SuperHero> superHeroes, IList<SuperHero> superHeroTeam)
         {
-            var kaga = JsonConvert.SerializeObject(superHeroes);
+            if (File.Exists("kaga.json"))
+            {
+                var superHeroesJSON = JsonConvert.DeserializeObject<IList<SuperHero>>(File.ReadAllText("kaga.json"));
+                this.superHeroes = superHeroesJSON;
+                this.superHeroTeam = superHeroTeam;
+            }
+
+
+
             ;
-            //this.superHeroes = superHeroes;
-            //this.superHeroTeam = superHeroTeam;
+            
         }
 
         public void AddToTeam(SuperHero superHero)
