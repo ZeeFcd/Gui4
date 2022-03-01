@@ -18,19 +18,19 @@ namespace Gui4.ViewModels
     public class MainWindowViewModel : ObservableRecipient
     {
         ISuperHeroTeamLogic logic;
-        public ObservableCollection<SuperHero> Battlefield { get; set; }
+        public ObservableCollection<SuperHero> SuperHeroes { get; set; }
         public ObservableCollection<SuperHero> Team { get; set; }
 
-        private SuperHero selectedFromBattlefield;
+        private SuperHero selectedFromSuperHeroes;
 
-        public SuperHero SelectedFromBattlefield
+        public SuperHero SelectedFromSuperHeroes
         {
-            get { return selectedFromBattlefield; }
+            get { return selectedFromSuperHeroes; }
             set
             {
-                SetProperty(ref selectedFromBattlefield, value);
+                SetProperty(ref selectedFromSuperHeroes, value);
                 (AddToTeamCommand as RelayCommand).NotifyCanExecuteChanged();
-                (EditSuperHeroCommand as RelayCommand).NotifyCanExecuteChanged();
+                (CreateSuperHeroCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -48,7 +48,7 @@ namespace Gui4.ViewModels
 
         public ICommand AddToTeamCommand { get; set; }
         public ICommand RemoveFromTeamCommand { get; set; }
-        public ICommand EditSuperHeroCommand { get; set; }
+        public ICommand CreateSuperHeroCommand { get; set; }
 
         //public int AllCost
         //{
@@ -93,16 +93,16 @@ namespace Gui4.ViewModels
         public MainWindowViewModel(ISuperHeroTeamLogic logic)
         {
             this.logic = logic;
-            Battlefield = new ObservableCollection<SuperHero>();
+            SuperHeroes = new ObservableCollection<SuperHero>();
             Team = new ObservableCollection<SuperHero>();
 
 
 
-            logic.SetupCollections(Battlefield, Team);
+            logic.SetupCollections(SuperHeroes, Team);
 
             AddToTeamCommand = new RelayCommand(
-                () => logic.AddToTeam(selectedFromBattlefield),
-                () => selectedFromBattlefield != null
+                () => logic.AddToTeam(selectedFromSuperHeroes),
+                () => selectedFromSuperHeroes != null
                 );
 
             RemoveFromTeamCommand = new RelayCommand(
@@ -110,9 +110,9 @@ namespace Gui4.ViewModels
                 () => selectedFromTeam != null
                 );
 
-            EditSuperHeroCommand = new RelayCommand(
-                () => logic.EditSuperHero(selectedFromBattlefield),
-                () => selectedFromBattlefield != null
+            CreateSuperHeroCommand = new RelayCommand(
+                () => logic.CreateSuperHero(),
+                () => selectedFromSuperHeroes != null
                 );
 
             Messenger.Register<MainWindowViewModel, string, string>(this, "SuperHeroInfo", (recipient, msg) =>
