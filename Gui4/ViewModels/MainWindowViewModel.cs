@@ -112,7 +112,8 @@ namespace Gui4.ViewModels
 
             CreateSuperHeroCommand = new RelayCommand(
                 () => logic.CreateSuperHero(),
-                () => selectedFromSuperHeroes != null
+                () => true
+
                 );
 
             Messenger.Register<MainWindowViewModel, string, string>(this, "SuperHeroInfo", (recipient, msg) =>
