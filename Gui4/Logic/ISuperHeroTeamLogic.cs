@@ -10,7 +10,7 @@ namespace Gui4.Logic
         double AVGSpeed { get; }
 
         void AddToTeam(SuperHero superHero);
-        void RemoveTeam(SuperHero superHero);
+        void RemoveFromTeam(SuperHero superHero);
         void EditSuperHero(SuperHero superHero);
         void SetupCollections(IList<SuperHero> superHeroes, IList<SuperHero> superHeroTeam);
     }
