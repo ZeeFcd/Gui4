@@ -65,9 +65,9 @@ namespace Gui4.Logic
             messenger.Send("Superhero removed", "SuperHeroInfo");
         }
 
-        public void EditSuperHero(SuperHero superHero)
+        public void CreateSuperHero(SuperHero superHero)
         {
-            editorService.Edit(superHero);
+            editorService.Create(superHero);
         }
     }
 }

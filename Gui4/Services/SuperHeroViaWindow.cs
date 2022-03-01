@@ -9,7 +9,7 @@ namespace Gui4.Services
 {
     class SuperHeroViaWindow : ISuperHeroEditorService
     {
-        public void Edit(SuperHero superHero)
+        public void Create(SuperHero superHero)
         {
             //new SuperHeroEditorWindow(superHero).ShowDialog();
         }
