@@ -1,4 +1,7 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using Gui4.Logic;
+using Gui4.Models;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -14,46 +17,46 @@ namespace Gui4.ViewModels
 {
     public class MainWindowViewModel : ObservableRecipient
     {
-        IArmyLogic logic;
-        public ObservableCollection<Trooper> Barrack { get; set; }
-        public ObservableCollection<Trooper> Army { get; set; }
+        ISuperHeroTeamLogic logic;
+        public ObservableCollection<SuperHero> Battlefield { get; set; }
+        public ObservableCollection<SuperHero> Team { get; set; }
 
-        private Trooper selectedFromBarracks;
+        private SuperHero selectedFromBattlefield;
 
-        public Trooper SelectedFromBarracks
+        public SuperHero SelectedFromBattlefield
         {
-            get { return selectedFromBarracks; }
+            get { return selectedFromBattlefield; }
             set
             {
-                SetProperty(ref selectedFromBarracks, value);
-                (AddToArmyCommand as RelayCommand).NotifyCanExecuteChanged();
-                (EditTrooperCommand as RelayCommand).NotifyCanExecuteChanged();
+                SetProperty(ref selectedFromBattlefield, value);
+                (AddToTeamCommand as RelayCommand).NotifyCanExecuteChanged();
+                (EditSuperHeroCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
-        private Trooper selectedFromArmy;
+        private SuperHero selectedFromTeam;
 
-        public Trooper SelectedFromArmy
+        public SuperHero SelectedFromTeam
         {
-            get { return selectedFromArmy; }
+            get { return selectedFromTeam; }
             set
             {
-                SetProperty(ref selectedFromArmy, value);
-                (RemoveFromArmyCommand as RelayCommand).NotifyCanExecuteChanged();
+                SetProperty(ref selectedFromTeam, value);
+                (RemoveFromTeamCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
-        public ICommand AddToArmyCommand { get; set; }
-        public ICommand RemoveFromArmyCommand { get; set; }
-        public ICommand EditTrooperCommand { get; set; }
+        public ICommand AddToTeamCommand { get; set; }
+        public ICommand RemoveFromTeamCommand { get; set; }
+        public ICommand EditSuperHeroCommand { get; set; }
 
-        public int AllCost
-        {
-            get
-            {
-                return logic.AllCost;
-            }
-        }
+        //public int AllCost
+        //{
+        //    get
+        //    {
+        //        return logic.AllCost;
+        //    }
+        //}
 
         public double AVGPower
         {
@@ -82,73 +85,42 @@ namespace Gui4.ViewModels
 
 
         public MainWindowViewModel()
-            : this(IsInDesignMode ? null : Ioc.Default.GetService<IArmyLogic>())
+            : this(IsInDesignMode ? null : Ioc.Default.GetService<ISuperHeroTeamLogic>())
         {
 
         }
 
-        public MainWindowViewModel(IArmyLogic logic)
+        public MainWindowViewModel(ISuperHeroTeamLogic logic)
         {
             this.logic = logic;
-            Barrack = new ObservableCollection<Trooper>();
-            Army = new ObservableCollection<Trooper>();
+            Battlefield = new ObservableCollection<SuperHero>();
+            Team = new ObservableCollection<SuperHero>();
 
-            Barrack.Add(new Trooper()
-            {
-                Type = "marine",
-                Power = 8,
-                Speed = 6
-            });
-            Barrack.Add(new Trooper()
-            {
-                Type = "pilot",
-                Power = 7,
-                Speed = 3
-            });
-            Barrack.Add(new Trooper()
-            {
-                Type = "infantry",
-                Power = 6,
-                Speed = 8
-            });
-            Barrack.Add(new Trooper()
-            {
-                Type = "sniper",
-                Power = 3,
-                Speed = 3
-            });
-            Barrack.Add(new Trooper()
-            {
-                Type = "engineer",
-                Power = 5,
-                Speed = 6
-            });
 
-            Army.Add(Barrack[2].GetCopy());
-            Army.Add(Barrack[4].GetCopy());
 
-            logic.SetupCollections(Barrack, Army);
+            logic.SetupCollections(Battlefield, Team);
 
-            AddToArmyCommand = new RelayCommand(
-                () => logic.AddToArmy(SelectedFromBarracks),
-                () => SelectedFromBarracks != null
+            AddToTeamCommand = new RelayCommand(
+                () => logic.AddToTeam(selectedFromBattlefield),
+                () => selectedFromBattlefield != null
                 );
 
-            RemoveFromArmyCommand = new RelayCommand(
-                () => logic.RemoveFromArmy(SelectedFromArmy),
-                () => SelectedFromArmy != null
+            RemoveFromTeamCommand = new RelayCommand(
+                () => logic.RemoveFromTeam(selectedFromTeam),
+                () => selectedFromTeam != null
                 );
 
-            EditTrooperCommand = new RelayCommand(
-                () => logic.EditTrooper(SelectedFromBarracks),
-                () => SelectedFromBarracks != null
+            EditSuperHeroCommand = new RelayCommand(
+                () => logic.EditSuperHero(selectedFromBattlefield),
+                () => selectedFromBattlefield != null
                 );
 
-            Messenger.Register<MainWindowViewModel, string, string>(this, "TrooperInfo", (recipient, msg) =>
+            Messenger.Register<MainWindowViewModel, string, string>(this, "SuperHeroInfo", (recipient, msg) =>
             {
-                OnPropertyChanged("AllCost");
+                //OnPropertyChanged("AllCost");
                 OnPropertyChanged("AVGPower");
                 OnPropertyChanged("AVGSpeed");
             });
         }
     }
+}
