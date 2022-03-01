@@ -72,6 +72,7 @@ namespace Gui4.Logic
             SuperHero superHero = new SuperHero() { Type="",Power=0 ,Karma=KarmaEnum.Neutral , Speed =0, };
             superHeroes.Add(superHero);
             editorService.Create(superHero);
+            messenger.Send("Superhero created", "SuperHeroInfo");
         }
     }
 }
