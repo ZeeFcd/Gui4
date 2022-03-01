@@ -9,6 +9,7 @@ namespace Gui4.Services
 {
     public interface ISuperHeroEditorService
     {
+        bool? Closed { get; set; }
         void Create(SuperHero superHero);
     }
 }

@@ -21,15 +21,17 @@ namespace Gui4
     /// </summary>
     public partial class CreateSuperHero : Window
     {
+        bool closedByButton;
         public CreateSuperHero(SuperHero superhero)
         {
             InitializeComponent();
+            closedByButton = false;
             var vm = new CreateSuperHeroViewModel();
             vm.Setup(superhero);
             this.DataContext = vm;
         }
 
-        private void Vm_EditedDone(object? sender, EventArgs e)
+        private void Vm_CreateddDone(object? sender, EventArgs e)
         {
             this.DialogResult = true;
         }
@@ -43,10 +45,10 @@ namespace Gui4
                     t.GetBindingExpression(TextBox.TextProperty).UpdateSource();
                 }
             }
+            closedByButton = true;
             this.DialogResult = true;
+
         }
-
-
-
+                
     }
 }

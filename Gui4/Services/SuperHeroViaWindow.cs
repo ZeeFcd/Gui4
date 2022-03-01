@@ -9,9 +9,12 @@ namespace Gui4.Services
 {
     class SuperHeroViaWindow : ISuperHeroEditorService
     {
+        public bool? Closed { get; set; }
         public void Create(SuperHero superHero)
         {
-            new CreateSuperHero(superHero).ShowDialog();
+            
+           Closed = new CreateSuperHero(superHero).ShowDialog();
+
         }
     }
 }
