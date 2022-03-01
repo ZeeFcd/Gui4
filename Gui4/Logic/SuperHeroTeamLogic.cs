@@ -1,0 +1,68 @@
+﻿using Microsoft.Toolkit.Mvvm.Messaging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Gui4.Logic
+{
+    public class SuperHeroTeamLogic
+    {
+        IList<SuperHero> superHeroes;
+        IList<SuperHero> superHeroTeam;
+        IMessenger messenger;
+
+        public SuperHeroTeamLogic(IMessenger messenger)
+        {
+            this.messenger = messenger;
+        }
+
+        public int AllCost
+        {
+            get
+            {
+                return superHeroTeam.Count == 0 ? 0 : superHeroTeam.Sum(t => t.Cost);
+            }
+        }
+
+        public double AVGPower
+        {
+            get
+            {
+                return Math.Round(superHeroTeam.Count == 0 ? 0 : superHeroTeam.Average(t => t.Power), 2);
+            }
+        }
+
+        public double AVGSpeed
+        {
+            get
+            {
+                return Math.Round(superHeroTeam.Count == 0 ? 0 : superHeroTeam.Average(t => t.Speed), 2);
+            }
+        }
+
+        public void SetupCollections(IList<SuperHero> superHeroes, IList<SuperHero> superHeroTeam)
+        {
+            this.superHeroes = superHeroes;
+            this.superHeroTeam = superHeroTeam;
+        }
+
+        public void AddToArmy(SuperHero superHero)
+        {
+            superHeroTeam.Add(superHero.GetCopy());
+            messenger.Send("Trooper added", "TrooperInfo");
+        }
+
+        public void RemoveFromArmy(SuperHero superHero)
+        {
+            superHeroTeam.Remove(superHero);
+            messenger.Send("Trooper removed", "TrooperInfo");
+        }
+
+        //public void EditTrooper(SuperHero superHero)
+        //{
+        //    editorService.Edit(trooper);
+        //}
+    }
+}
