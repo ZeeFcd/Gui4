@@ -7,7 +7,7 @@
         xmlns:vms="clr-namespace:Gui4.ViewModels"
         xmlns:helpers="clr-namespace:Gui4.Helpers"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
     <Window.DataContext>
         <vms:MainWindowViewModel />
     </Window.DataContext>

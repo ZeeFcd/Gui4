@@ -49,6 +49,7 @@ namespace Gui4.ViewModels
         public ICommand AddToTeamCommand { get; set; }
         public ICommand RemoveFromTeamCommand { get; set; }
         public ICommand CreateSuperHeroCommand { get; set; }
+      
 
 
         public double AVGPower
@@ -106,8 +107,8 @@ namespace Gui4.ViewModels
             CreateSuperHeroCommand = new RelayCommand(
                 () => logic.CreateSuperHero(),
                 () => true
-
                 );
+
 
             Messenger.Register<MainWindowViewModel, string, string>(this, "SuperHeroInfo", (recipient, msg) =>
             {

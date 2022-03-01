@@ -52,9 +52,9 @@ namespace Gui4.Logic
 
         public void SetupCollections(IList<SuperHero> superHeroes, IList<SuperHero> superHeroTeam)
         {
-            if (File.Exists("kaga.json"))
+            if (File.Exists("heroes.json"))
             {
-                var superHeroesJSON = JsonConvert.DeserializeObject<IList<SuperHero>>(File.ReadAllText("kaga.json"));
+                var superHeroesJSON = JsonConvert.DeserializeObject<IList<SuperHero>>(File.ReadAllText("heroes.json"));
                 superHeroes = superHeroesJSON;
                 this.superHeroes = superHeroesJSON;   
             }
@@ -90,5 +90,7 @@ namespace Gui4.Logic
             
             
         }
+
+        
     }
 }
