@@ -12,6 +12,6 @@ namespace Gui4.Logic
         void RemoveFromTeam(SuperHero superHero);
         void CreateSuperHero();
         void SetupCollections(IList<SuperHero> superHeroes, IList<SuperHero> superHeroTeam);
-     
+        void SaveHeroes();
     }
 }

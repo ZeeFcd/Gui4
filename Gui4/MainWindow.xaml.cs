@@ -28,10 +28,5 @@ namespace Gui4
             InitializeComponent();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            string JsonData = JsonConvert.SerializeObject((DataContext as MainWindowViewModel).SuperHeroes);
-            File.WriteAllText("heroes.json", JsonData);
-        }
     }
 }

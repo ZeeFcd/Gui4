@@ -1,4 +1,5 @@
 ﻿using Gui4.Models;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Windows.Input;
 
 namespace Gui4.ViewModels
 {
-    public class CreateSuperHeroViewModel
+    public class CreateSuperHeroViewModel : ObservableRecipient
     {
         public SuperHero Actual { get; set; }
         

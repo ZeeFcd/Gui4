@@ -1,6 +1,7 @@
 ﻿using Gui4.Helpers;
 using Gui4.Models;
 using Gui4.Services;
+using Gui4.ViewModels;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using Newtonsoft.Json;
 using System;
@@ -75,6 +76,10 @@ namespace Gui4.Logic
             
         }
 
-        
+        public void SaveHeroes()
+        {
+            string JsonData = JsonConvert.SerializeObject(superHeroes);
+            File.WriteAllText("heroes.json", JsonData);
+        }
     }
 }
