@@ -1,6 +1,7 @@
 ﻿using Gui4.Models;
 using Gui4.Services;
 using Microsoft.Toolkit.Mvvm.Messaging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,8 +50,10 @@ namespace Gui4.Logic
 
         public void SetupCollections(IList<SuperHero> superHeroes, IList<SuperHero> superHeroTeam)
         {
-            this.superHeroes = superHeroes;
-            this.superHeroTeam = superHeroTeam;
+            var kaga = JsonConvert.SerializeObject(superHeroes);
+            ;
+            //this.superHeroes = superHeroes;
+            //this.superHeroTeam = superHeroTeam;
         }
 
         public void AddToTeam(SuperHero superHero)
