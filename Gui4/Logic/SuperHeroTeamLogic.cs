@@ -1,4 +1,6 @@
-﻿using Microsoft.Toolkit.Mvvm.Messaging;
+﻿using Gui4.Models;
+using Gui4.Services;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +9,18 @@ using System.Threading.Tasks;
 
 namespace Gui4.Logic
 {
-    public class SuperHeroTeamLogic
+    public class SuperHeroTeamLogic : ISuperHeroTeamLogic
     {
         IList<SuperHero> superHeroes;
         IList<SuperHero> superHeroTeam;
         IMessenger messenger;
+        ISuperHeroEditorService editorService;
 
-        public SuperHeroTeamLogic(IMessenger messenger)
+
+        public SuperHeroTeamLogic(IMessenger messenger, ISuperHeroEditorService editorService)
         {
             this.messenger = messenger;
+            this.editorService = editorService;
         }
 
         public int AllCost
@@ -60,9 +65,9 @@ namespace Gui4.Logic
             messenger.Send("Trooper removed", "TrooperInfo");
         }
 
-        //public void EditTrooper(SuperHero superHero)
-        //{
-        //    editorService.Edit(trooper);
-        //}
+        public void EditTrooper(SuperHero superHero)
+        {
+            editorService.Edit(superHero);
+        }
     }
 }
